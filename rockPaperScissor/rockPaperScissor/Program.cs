@@ -4,6 +4,9 @@ Console.WriteLine("Press 1 for Single Player Or 2 for Multiplyer");
 
 int userModeChoice;
 int computerChoice, userChoice;
+char playAgain;
+string userChoiceInStr, computerChoiceInStr;
+
 int[] allowIfOne = { 2, 3 };
 int[] allowIfTwo = { 1, 3 };
 int[] allowIfThree = { 1, 2 };
@@ -47,23 +50,66 @@ if(userModeChoice == 1)
             computerChoice = userChoice;
         }
 
-        Console.WriteLine($"Your choice: {userChoice}");
-        Console.WriteLine($"Computer choice: {computerChoice}");
-
-        Console.WriteLine("");
-        Console.WriteLine("");
-
-        // User win situation
-        if ((userChoice == 1 && computerChoice == 3) || (userChoice == 2 && computerChoice == 1) || (userChoice == 3 && computerChoice == 2))
+        if(userChoice == 1)
         {
-            Console.WriteLine("You Won!");
-        }else
+            Console.WriteLine($"Your choice: Rock");
+        }else if(userChoice == 2)
         {
-            Console.WriteLine("You Lose!");
+            Console.WriteLine($"Your choice: Paper");
+
+        }else if(userChoice == 3)
+        {
+            Console.WriteLine($"Your choice: Scissor");
+
         }
 
-        Console.WriteLine("");
-        Console.WriteLine("");
+        if(computerChoice == 1)
+        {
+            Console.WriteLine($"Computer's choice: Rock\n\n");
+        }else if(computerChoice == 2)
+        {
+            Console.WriteLine($"Computer's choice: Paper\n\n");
+
+        }else if(computerChoice == 3)
+        {
+            Console.WriteLine($"Computer's choice: Scissor\n\n");
+
+        }
+
+        // User win situation
+        if(userChoice == computerChoice)
+        {
+            Console.WriteLine("It's a Draw!\n\n");
+        }
+        else if ((userChoice == 1 && computerChoice == 3) || (userChoice == 2 && computerChoice == 1) || (userChoice == 3 && computerChoice == 2))
+        {
+            Console.WriteLine("Contrazs! You Won!\n\n");
+        }else
+        {
+            Console.WriteLine("Sorry You Lose!\n\n");
+        }
+
+
+        Console.WriteLine("Do you want to play again? (y)");
+        if(!char.TryParse(Console.ReadLine(), out playAgain))
+        {
+            Console.WriteLine("Please press y to continue");
+            return;
+        }
+
+        if(playAgain == 'y')
+        {
+            Console.Clear();
+            continue;
+        }
+        else
+        {
+            Console.WriteLine("Byee... See you againg");
+            break;
+            
+        }
+
+        
     }
 
 } else
